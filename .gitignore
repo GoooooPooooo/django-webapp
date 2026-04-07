@@ -46,6 +46,12 @@ pip-delete-this-directory.txt
 models/
 checkpoints/
 
+# Except frontend
+!frontend/public/models/
+!frontend/public/models/*.onnx
+!frontend/dist/
+!frontend/dist/**
+
 # Coverage
 htmlcov/
 .tox/
