@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [feat/frontend-onnx]
-    paths: ['frontend/**']
   workflow_dispatch:
 
 permissions:
