@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 12px;
+  object-fit: contain;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.result {
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.prediction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.className {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.confidence {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.barLabel {
+  min-width: 80px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  text-align: right;
+}
+
+.barBg {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.barPercent {
+  min-width: 48px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  font-weight: 500;
+}
