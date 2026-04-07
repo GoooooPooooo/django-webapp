@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Классификация рептилий — Варан, Хамелеон, Геккон</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #4ade80;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #4ade80;
+        }
+
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 20px 60px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .upload-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .upload-card h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #1a1a2e;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        .file-drop {
+            border: 2px dashed #d1d5db;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .file-drop:hover {
+            border-color: #4ade80;
+            background: #f0fdf4;
+        }
+
+        .file-drop input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-drop-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .file-drop-text {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .file-drop-text strong {
+            color: #4ade80;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 15px;
+            background: #fff;
+            color: #374151;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4ade80;
+        }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .result-card h3 {
+            font-size: 20px;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .result-image {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 16px;
+            margin: 0 auto 25px;
+            display: block;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .prediction-result {
+            font-size: 28px;
+            font-weight: 700;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .class-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .class-card .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .class-card .name {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .class-card .desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .manage-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .manage-link:hover {
+            color: #4ade80;
+        }
+
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 28px; }
+            .classes-grid { grid-template-columns: 1fr; }
+            .upload-card { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="/" class="logo">🦎 Reptile<span>Classifier</span></a>
+            <div class="nav-links">
+                <a href="/">Классификация</a>
+                <a href="uploadModel">Модели</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="hero">
+            <h1>Классификация <span>рептилий</span></h1>
+            <p>Загрузите изображение — нейросеть определит вид рептилии</p>
+        </div>
+
+        <div class="upload-card">
+            <h2>Загрузите изображение</h2>
+            <form action="predictImage" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <div class="file-drop">
+                        <div class="file-drop-icon">📷</div>
+                        <div class="file-drop-text">Перетащите изображение сюда или <strong>нажмите для выбора</strong></div>
+                        <input name="filePath" type="file" accept="image/*" required id="fileInput">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="modelName">Выберите модель:</label>
+                    <select name="modelName" id="modelName">
+                        {% for model in available_models %}
+                            <option value="{{ model }}" {% if model == current_model %}selected{% endif %}>
+                                {{ model }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary">🔍 Классифицировать</button>
+
+                <a href="uploadModel" class="manage-link">⚙️ Управление моделями</a>
+            </form>
+        </div>
+
+        {% if image_url %}
+        <div class="result-card">
+            <h3>Результат классификации</h3>
+            <img src="{{ image_url }}" alt="Загруженное изображение" class="result-image">
+            {% if scorePrediction %}
+                <div class="prediction-result">{{ scorePrediction }}</div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="classes-grid">
+            <div class="class-card">
+                <div class="icon">🐊</div>
+                <div class="name">Варан</div>
+                <div class="desc">Класс 0</div>
+            </div>
+            <div class="class-card">
+                <div class="icon">🦎</div>
+                <div class="name">Хамелеон</div>
+                <div class="desc">Класс 1</div>
+            </div>
+            <div class="class-card">
+                <div class="icon">🦎</div>
+                <div class="name">Геккон</div>
+                <div class="desc">Класс 2</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Домашнее задание №1 | РНС | МГТУ им. Баумана
+    </div>
+
+    <script>
+        // Отображение имени выбранного файла
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const dropText = document.querySelector('.file-drop-text');
+                dropText.innerHTML = '✅ Выбрано: <strong>' + file.name + '</strong>';
+            }
+        });
+    </script>
+</body>
+</html>

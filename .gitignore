@@ -1,0 +1,64 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+*.pyo
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+/static
+
+# Environment
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.env.docker
+
+# Python
+*.egg-info/
+dist/
+build/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# MinIO/ML models
+*.pth
+*.pt
+*.onnx
+models/
+checkpoints/
+
+# Coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Migrations (optional, uncomment if needed)
+# */migrations/*.py
+# !*/migrations/__init__.py
